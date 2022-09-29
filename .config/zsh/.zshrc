@@ -1,15 +1,5 @@
 #!/usr/bin/env zsh
 
-
-
-
-
-
-
-
-
-
-
 № ZI
 typeset -Ag ZI
 # ------------------------------------- ##
@@ -26,8 +16,8 @@ autoload -Uz _zi
 
 
 # Apps
-zi light romkatv/zsh-defer
-
+zi load romkatv/zsh-defer
+# ------------------------------------- ##
 zsh-defer zi wait lucid light-mode for \
   atload"ZINIT[COMPINIT_OPTS]=-C; zpcompinit" \
     zdharma/fast-syntax-highlighting \
@@ -41,32 +31,29 @@ zsh-defer zi wait lucid light-mode for \
     hlissner/zsh-autopair \
     urbainvaes/fzf-marks
   pack"no-dir-color-swap" atload"zstyle ':completion:*' list-colors \${(s.:.)LS_COLORS}" \
-
-
-  atload'ZSH_AUTOSUGGEST_CLEAR_WIDGETS+=(autopair-insert)' \
-
+    sharkdp/vivid
+# ------------------------------------- ##
 # OMZ
-zi is-snippet wait lucid for \
+zsh-defer zi is-snippet wait lucid for \
   atload"unalias grv g" \
     OMZP::{git,sudo,encode64,extract} \
     OMZP::colored-man-pages
-
+# ------------------------------------- ##
 # Prezto
-zi is-snippet wait lucid for \
+zsh-defer zi is-snippet wait lucid for \
   PZTM::archive
   PZTM::autosuggestions
   PZTM::command-not-found
   PZTM::completion
   PZTM::history-substring-search
   PZTM::pacman
-  
-
+# ------------------------------------- ##
 # Semi-graphical .zshrc editor for zi commands
 zsh-defer zi light zdharma/zui
 zsh-defer zi ice lucid wait'[[ -n ${ZLAST_COMMANDS[(r)cras*]} ]]'
 zsh-defer zi light zdharma/zinit-crasis 
 CRASIS_THEME="zdharma-256" CRASIS_LAYOUT="contract" crasis
-    
+# ------------------------------------- ##
 # startify
 zsh-defer zi ice waite45vvvgt"0" lucid atload"zsh-startify" \
 zsh-defer zi load zdharma-continuum/zsh-startify
